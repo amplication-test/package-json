@@ -274,6 +274,7 @@ export class CustomerControllerBase {
         },
 
         quantity: true,
+        test: true,
         totalPrice: true,
         updatedAt: true,
       },
