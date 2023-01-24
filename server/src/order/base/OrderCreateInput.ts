@@ -91,6 +91,8 @@ class OrderCreateInput {
     nullable: true,
   })
   totalPrice?: number | null;
+
+  hi!: string;
 }
 
 export { OrderCreateInput };
