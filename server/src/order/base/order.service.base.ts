@@ -62,4 +62,8 @@ export class OrderServiceBase {
       })
       .product();
   }
+
+  getHi() {
+    return "Hi";
+  }
 }
