@@ -29,6 +29,7 @@ export const OrderCreate = (props: CreateProps): React.ReactElement => {
           <SelectInput optionText={ProductTitle} />
         </ReferenceInput>
         <NumberInput step={1} label="Quantity" source="quantity" />
+        <TextInput label="Te" source="te" />
         <TextInput label="Test" source="test" />
         <NumberInput step={1} label="Total Price" source="totalPrice" />
       </SimpleForm>
