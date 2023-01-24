@@ -11,6 +11,7 @@ export type OrderWhereInput = {
   id?: StringFilter;
   product?: ProductWhereUniqueInput;
   quantity?: IntNullableFilter;
+  te?: StringNullableFilter;
   test?: StringNullableFilter;
   totalPrice?: IntNullableFilter;
 };

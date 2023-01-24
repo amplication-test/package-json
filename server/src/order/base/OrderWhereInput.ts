@@ -88,6 +88,17 @@ class OrderWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  te?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   test?: StringNullableFilter;
 
   @ApiProperty({

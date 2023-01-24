@@ -79,6 +79,17 @@ class OrderUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  te?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   test?: string | null;
 
   @ApiProperty({

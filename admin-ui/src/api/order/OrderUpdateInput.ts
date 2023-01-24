@@ -6,6 +6,7 @@ export type OrderUpdateInput = {
   discount?: number | null;
   product?: ProductWhereUniqueInput | null;
   quantity?: number | null;
+  te?: string | null;
   test?: string | null;
   totalPrice?: number | null;
 };
