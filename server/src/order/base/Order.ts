@@ -110,6 +110,8 @@ class Order {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  hi!: string;
 }
 
 export { Order };
