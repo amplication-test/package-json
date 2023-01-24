@@ -21,7 +21,7 @@
     "prisma:push": " prisma db push"
   },
   "dependencies": {
-    "@nestjs/common": "8.4.7",
+    "@nestjs/common": "9.2.1",
     "@nestjs/config": "1.1.5",
     "@nestjs/core": "8.4.7",
     "@nestjs/graphql": "9.1.2",
@@ -37,6 +37,7 @@
     "class-validator": "0.13.2",
     "graphql": "15.7.2",
     "graphql-type-json": "0.3.2",
+    "lerna": "^6.4.1",
     "nest-access-control": "2.0.3",
     "nest-morgan": "1.0.1",
     "nestjs-prisma": "0.19.0",
@@ -70,6 +71,8 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "modulePathIgnorePatterns": ["<rootDir>/dist/"]
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
   }
 }
