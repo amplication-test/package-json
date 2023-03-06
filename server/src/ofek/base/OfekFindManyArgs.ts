@@ -50,4 +50,4 @@ class OfekFindManyArgs {
   take?: number;
 }
 
-export { OfekFindManyArgs };
+export { OfekFindManyArgs as OfekFindManyArgs };

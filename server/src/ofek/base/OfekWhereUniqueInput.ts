@@ -24,4 +24,4 @@ class OfekWhereUniqueInput {
   id!: string;
 }
 
-export { OfekWhereUniqueInput };
+export { OfekWhereUniqueInput as OfekWhereUniqueInput };

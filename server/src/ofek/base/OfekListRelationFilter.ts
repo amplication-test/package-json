@@ -53,4 +53,4 @@ class OfekListRelationFilter {
   })
   none?: OfekWhereInput;
 }
-export { OfekListRelationFilter };
+export { OfekListRelationFilter as OfekListRelationFilter };

@@ -10,4 +10,4 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 class OfekUpdateInput {}
-export { OfekUpdateInput };
+export { OfekUpdateInput as OfekUpdateInput };
