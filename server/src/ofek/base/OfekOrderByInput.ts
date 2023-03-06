@@ -46,4 +46,4 @@ class OfekOrderByInput {
   updatedAt?: SortOrder;
 }
 
-export { OfekOrderByInput };
+export { OfekOrderByInput as OfekOrderByInput };

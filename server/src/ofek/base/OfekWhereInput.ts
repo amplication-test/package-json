@@ -29,4 +29,4 @@ class OfekWhereInput {
   id?: StringFilter;
 }
 
-export { OfekWhereInput };
+export { OfekWhereInput as OfekWhereInput };

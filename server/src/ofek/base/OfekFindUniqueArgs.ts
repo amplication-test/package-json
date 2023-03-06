@@ -18,4 +18,4 @@ class OfekFindUniqueArgs {
   where!: OfekWhereUniqueInput;
 }
 
-export { OfekFindUniqueArgs };
+export { OfekFindUniqueArgs as OfekFindUniqueArgs };
