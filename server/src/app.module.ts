@@ -7,8 +7,6 @@ import { CustomerModule } from "./customer/customer.module";
 import { AddressModule } from "./address/address.module";
 import { ProductModule } from "./product/product.module";
 import { OfekModule } from "./ofek/ofek.module";
-import { ACLModule } from "./auth/acl.module";
-import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -26,8 +24,6 @@ import { GraphQLModule } from "@nestjs/graphql";
     AddressModule,
     ProductModule,
     OfekModule,
-    ACLModule,
-    AuthModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

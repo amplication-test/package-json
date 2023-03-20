@@ -18,4 +18,4 @@ class DeleteOfekArgs {
   where!: OfekWhereUniqueInput;
 }
 
-export { DeleteOfekArgs };
+export { DeleteOfekArgs as DeleteOfekArgs };

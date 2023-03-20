@@ -104,4 +104,4 @@ class OrderUpdateInput {
   totalPrice?: number | null;
 }
 
-export { OrderUpdateInput };
+export { OrderUpdateInput as OrderUpdateInput };

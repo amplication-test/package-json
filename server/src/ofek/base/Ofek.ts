@@ -41,4 +41,4 @@ class Ofek {
   updatedAt!: Date;
 }
 
-export { Ofek };
+export { Ofek as Ofek };

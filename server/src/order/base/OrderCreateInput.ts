@@ -35,7 +35,7 @@ class OrderCreateInput {
     nullable: true,
   })
   customer?: CustomerWhereUniqueInput | null;
-  // 38
+
   @ApiProperty({
     required: false,
     type: Number,
@@ -46,7 +46,7 @@ class OrderCreateInput {
     nullable: true,
   })
   discount?: number | null;
-  // 49
+
   @ApiProperty({
     required: false,
     type: () => ProductWhereUniqueInput,
@@ -80,7 +80,7 @@ class OrderCreateInput {
     nullable: true,
   })
   te?: string | null;
-  // 83
+
   @ApiProperty({
     required: false,
     type: String,
@@ -102,8 +102,6 @@ class OrderCreateInput {
     nullable: true,
   })
   totalPrice?: number | null;
-  //105
-  hi!: string;
 }
 
-export { OrderCreateInput };
+export { OrderCreateInput as OrderCreateInput };
