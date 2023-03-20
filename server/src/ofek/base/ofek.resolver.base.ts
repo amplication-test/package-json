@@ -13,30 +13,15 @@ import * as graphql from "@nestjs/graphql";
 import * as apollo from "apollo-server-express";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import * as nestAccessControl from "nest-access-control";
-import * as gqlACGuard from "../../auth/gqlAC.guard";
-import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
-import * as common from "@nestjs/common";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { DeleteOfekArgs } from "./DeleteOfekArgs";
 import { OfekFindManyArgs } from "./OfekFindManyArgs";
 import { OfekFindUniqueArgs } from "./OfekFindUniqueArgs";
 import { Ofek } from "./Ofek";
 import { OfekService } from "../ofek.service";
-@common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Ofek)
 export class OfekResolverBase {
-  constructor(
-    protected readonly service: OfekService,
-    protected readonly rolesBuilder: nestAccessControl.RolesBuilder
-  ) {}
+  constructor(protected readonly service: OfekService) {}
 
-  @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "read",
-    possession: "any",
-  })
   async _ofeksMeta(
     @graphql.Args() args: OfekFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -50,24 +35,12 @@ export class OfekResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.Query(() => [Ofek])
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "read",
-    possession: "any",
-  })
   async ofeks(@graphql.Args() args: OfekFindManyArgs): Promise<Ofek[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.Query(() => Ofek, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "read",
-    possession: "own",
-  })
   async ofek(@graphql.Args() args: OfekFindUniqueArgs): Promise<Ofek | null> {
     const result = await this.service.findOne(args);
     if (result === null) {
@@ -77,11 +50,6 @@ export class OfekResolverBase {
   }
 
   @graphql.Mutation(() => Ofek)
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "delete",
-    possession: "any",
-  })
   async deleteOfek(@graphql.Args() args: DeleteOfekArgs): Promise<Ofek | null> {
     try {
       return await this.service.delete(args);

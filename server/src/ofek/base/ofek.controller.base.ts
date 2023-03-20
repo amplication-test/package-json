@@ -16,11 +16,7 @@ import * as errors from "../../errors";
 import { Request } from "express";
 import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
-import * as nestAccessControl from "nest-access-control";
-import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { OfekService } from "../ofek.service";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { OfekCreateInput } from "./OfekCreateInput";
 import { OfekWhereInput } from "./OfekWhereInput";
 import { OfekWhereUniqueInput } from "./OfekWhereUniqueInput";
@@ -28,24 +24,10 @@ import { OfekFindManyArgs } from "./OfekFindManyArgs";
 import { OfekUpdateInput } from "./OfekUpdateInput";
 import { Ofek } from "./Ofek";
 
-@swagger.ApiBearerAuth()
-@common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class OfekControllerBase {
-  constructor(
-    protected readonly service: OfekService,
-    protected readonly rolesBuilder: nestAccessControl.RolesBuilder
-  ) {}
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  constructor(protected readonly service: OfekService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Ofek })
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "create",
-    possession: "any",
-  })
-  @swagger.ApiForbiddenResponse({
-    type: errors.ForbiddenException,
-  })
   async create(@common.Body() data: OfekCreateInput): Promise<Ofek> {
     return await this.service.create({
       data: data,
@@ -57,18 +39,9 @@ export class OfekControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
   @swagger.ApiOkResponse({ type: [Ofek] })
   @ApiNestedQuery(OfekFindManyArgs)
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "read",
-    possession: "any",
-  })
-  @swagger.ApiForbiddenResponse({
-    type: errors.ForbiddenException,
-  })
   async findMany(@common.Req() request: Request): Promise<Ofek[]> {
     const args = plainToClass(OfekFindManyArgs, request.query);
     return this.service.findMany({
@@ -81,18 +54,9 @@ export class OfekControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: Ofek })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "read",
-    possession: "own",
-  })
-  @swagger.ApiForbiddenResponse({
-    type: errors.ForbiddenException,
-  })
   async findOne(
     @common.Param() params: OfekWhereUniqueInput
   ): Promise<Ofek | null> {
@@ -112,18 +76,9 @@ export class OfekControllerBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: Ofek })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "update",
-    possession: "any",
-  })
-  @swagger.ApiForbiddenResponse({
-    type: errors.ForbiddenException,
-  })
   async update(
     @common.Param() params: OfekWhereUniqueInput,
     @common.Body() data: OfekUpdateInput
@@ -151,14 +106,6 @@ export class OfekControllerBase {
   @common.Delete("/:id")
   @swagger.ApiOkResponse({ type: Ofek })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "Ofek",
-    action: "delete",
-    possession: "any",
-  })
-  @swagger.ApiForbiddenResponse({
-    type: errors.ForbiddenException,
-  })
   async delete(
     @common.Param() params: OfekWhereUniqueInput
   ): Promise<Ofek | null> {
